@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './component/header/Nav';
 import VideoList from './component/videoList/videoList';
 
-function App() {
+function App({youtube}) {
   const [query, setQuery] = useState('')
   const [videolist, setVideoList] = useState([])
   useEffect(()=>{
@@ -11,17 +11,7 @@ function App() {
   }, [query])
 
   const getVideo=()=>{
-    const requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-      
-      fetch(`https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyDiBWcG3Luxfn6dOqM8RLKyP9n93xwnd7c&part=snippet&maxResults=25&q=${query}&type=video&key=AIzaSyDiBWcG3Luxfn6dOqM8RLKyP9n93xwnd7c`, requestOptions)
-        .then(response => response.json())
-        .then(result =>{ console.log(result)
-            setVideoList(result.items)
-        })
-        .catch(error => console.log('error', error));
+    youtube.requestOptions.then(console.log)
       }
   
   const handleChange =e=>{
