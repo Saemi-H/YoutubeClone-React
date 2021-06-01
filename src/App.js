@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import './App.css';
 import Nav from './component/header/Nav';
 import VideoList from './component/videoList/videoList';
+import Router from './useRouter/route'
 
 function App({youtube}) {
   const [query, setQuery] = useState('')
@@ -11,21 +12,30 @@ function App({youtube}) {
   }, [query])
 
   const getVideo=()=>{
-    youtube.requestOptions.then(console.log)
+    youtube.getPopularVideo().then(console.log)
+    youtube.getPopularVideo().then(result=>setVideoList(result.items))
       }
   
   const handleChange =e=>{
         console.log(e.target.value)
         setQuery(e.target.value)
+        youtube.getSearch(query).then(result=>setVideoList(result.items))
     }
   const handleSearch=()=>{
+    console.log('handlesearch')
+    youtube.getPopularVideo().then(console.log)
     
   }
+
   return (
+    
     <div className="App">
       <Nav handleChange={handleChange} handleSearch={handleSearch}/>
-      <VideoList videolist={videolist}/>
+      <Router/>
+      <VideoList videolist={videolist} /> 
     </div>
+    
+    
   );
 }
 

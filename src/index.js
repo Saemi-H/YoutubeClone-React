@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Youtube from './service/service';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Youtube from "./service/service";
+import { BrowserRouter } from "react-router-dom";
 
-const youtube = new Youtube(process.env.REACT_APP_YOUTUBE_API_KEY)
+const youtube = new Youtube(process.env.REACT_APP_YOUTUBE_API_KEY);
 ReactDOM.render(
-  <React.StrictMode>
-    <App youtube={youtube}/>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <BrowserRouter>
+        <App youtube={youtube} />
+    </BrowserRouter>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

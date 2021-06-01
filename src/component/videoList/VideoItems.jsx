@@ -5,10 +5,10 @@ const VideoItems = ({ videolist }) => {
     return (
         <div>
             <ul>
-                {videolist.map((video) => (
-                    <li key={video.id.videoId}>
+                {videolist.map(video => (
+                    
                         <VideoItem video={video} />
-                    </li>
+               
                 ))}
             </ul>
         </div>
